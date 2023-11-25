@@ -22,7 +22,8 @@ https://www.ewg.org/skindeep/understanding_skin_deep_ratings/
 https://www.skinsafeproducts.com/ingredients/1-decanaminium-n-n-dimethyl-n-octyl-chloride     
 https://www.skincarisma.com/ingredient-analyzer     
 https://github.com/lmmentel/awesome-python-chemistry       
-https://echa.europa.eu/substance-information/-/substanceinfo/100.025.683
+https://echa.europa.eu/substance-information/-/substanceinfo/100.025.683    
+https://theklog.co/skincare-ingredient-glossary/
 
 ---
 
