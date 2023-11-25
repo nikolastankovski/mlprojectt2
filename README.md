@@ -28,7 +28,12 @@ https://echa.europa.eu/substance-information/-/substanceinfo/100.025.683
 
 ## Сајтови со Бази на синоними:
 https://webbook.nist.gov/chemistry/name-ser/#Help        
-Да се корисити Берт бидејќи е претрениран на википедија
+Да се корисити Берт бидејќи е претрениран на википедија    
+
+---
+
+## Distance metrics:       
+https://en.wikipedia.org/wiki/Jaccard_index
 
 ---
 
@@ -53,8 +58,13 @@ https://keras-ocr.readthedocs.io/en/latest/
 NLP:    
 https://github.com/lmmentel/awesome-python-chemistry    
 https://wordnet.princeton.edu/    
-+ Any translation in Python    
++ Any translation in Python
 
+Scraping tools:     
+https://www.selenium.dev/documentation/webdriver/      
+https://www.w3schools.com/PYTHON/ref_requests_get.asp      
+
+---
 
 ## Регулативи:
 https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31996D0335     
