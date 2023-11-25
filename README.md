@@ -5,7 +5,8 @@ https://incidecoder.com/
 https://www.ewg.org/skindeep/understanding_skin_deep_ratings/     
 https://www.skinsafeproducts.com/ingredients/1-decanaminium-n-n-dimethyl-n-octyl-chloride     
 https://www.skincarisma.com/ingredient-analyzer     
-https://github.com/lmmentel/awesome-python-chemistry     
+https://github.com/lmmentel/awesome-python-chemistry       
+https://echa.europa.eu/substance-information/-/substanceinfo/100.025.683
 
 ---
 
@@ -13,10 +14,15 @@ https://github.com/lmmentel/awesome-python-chemistry
 https://webbook.nist.gov/chemistry/name-ser/#Help        
 Да се корисити Берт бидејќи е претрениран на википедија
 
-===
+---
 
 ## Линкови со рејтинг на состојки:    
 https://cosdna.com/eng/3da165145.html     
+
+---
+
+## Translator:     
+https://github.com/nidhaloff/deep-translator     
 
 ---
 
