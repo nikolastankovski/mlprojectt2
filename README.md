@@ -26,7 +26,7 @@ https://github.com/nidhaloff/deep-translator
 
 ---
 
-## Алатки пратени од Горјан:
+## Ресурси пратени од Горјан:
 OCR:       
 https://github.com/JaidedAI/EasyOCR      
 https://pypi.org/project/pytesseract/    
