@@ -26,6 +26,20 @@ https://github.com/nidhaloff/deep-translator
 
 ---
 
+## Алатки пратени од Горјан:
+OCR:       
+https://github.com/JaidedAI/EasyOCR      
+https://pypi.org/project/pytesseract/    
+https://github.com/mindee/doctr    
+https://huggingface.co/docs/transformers/model_doc/trocr    
+https://keras-ocr.readthedocs.io/en/latest/    
+
+NLP:    
+https://github.com/lmmentel/awesome-python-chemistry    
+https://wordnet.princeton.edu/    
++ Any translation in Python    
+
+
 ## Регулативи:
 https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:31996D0335     
 https://single-market-economy.ec.europa.eu/sectors/cosmetics/cosmetic-ingredient-database/cosing-glossary-ingredients_en
