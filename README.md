@@ -9,6 +9,10 @@ https://github.com/lmmentel/awesome-python-chemistry
 
 ---
 
+## Сајтови со Бази на синоними:
+https://webbook.nist.gov/chemistry/name-ser/#Help
+Да се корисити Берт бидејќи е претрениран на википедија
+
 ## Линкови со рејтинг на состојки:    
 https://cosdna.com/eng/3da165145.html     
 
