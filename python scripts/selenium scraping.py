@@ -17,10 +17,10 @@ last_page_item = driver.find_element(By.CSS_SELECTOR, ".page-item:last-child a")
 no_of_pages = int(last_page_item.get_attribute("href").split("/")[-1])
 
 
-with open('./Data/ingredient_scraping.csv', 'w', newline='') as file:
+with open('./Data/ingredient_w_synonyms.csv', 'w', newline='',encoding="utf-8") as file:
     file.truncate()
-    writer = csv.writer(file)
-    field = ["name"]
+    writer = csv.writer(file, delimiter=";")
+    field = ["name", "synonym"]
     
     writer.writerow(field)
     
@@ -31,9 +31,24 @@ with open('./Data/ingredient_scraping.csv', 'w', newline='') as file:
             
         page_elems = driver.find_elements(By.CSS_SELECTOR, "#ingredients-table div > a")
 
-        for el in page_elems:
-            ingredient = str(el.get_attribute("href").split("/")[-1])
-            writer.writerow([ingredient])
+        ingredient_urls = [el.get_attribute("href") for el in page_elems]
+
+        for url in ingredient_urls:
+            driver.get(url)
+            
+            ingredient_name = driver.find_element(By.CSS_SELECTOR, "#content div > h1").text.strip()
+            ingredient_synonyms = "N/A"
+            
+            try:
+                synonym_container = driver.find_element(By.CSS_SELECTOR, ".ingredient-description + div + div")
+                synonym_icon = synonym_container.find_element(By.CSS_SELECTOR, "div")
+                
+                el_classes = synonym_icon.get_attribute("class").split(" ")
+                
+                if("bg-emerald-100" in el_classes):
+                    ingredient_synonyms = str(synonym_container.find_element(By.CSS_SELECTOR, "p").text.split("\n")[1])
+            finally:
+                writer.writerow([ingredient_name, ingredient_synonyms])
                     
     driver.quit()
 
@@ -64,16 +79,3 @@ with open('./Data/ingredient_scraping.csv', 'w', newline='') as file:
 #             self.browser.fine
 #         self.browser.find_element()
 
-# ingredient_name = driver.find_element(By.CSS_SELECTOR, "#content div > h1").text.strip()
-#             ingredient_synonyms = "N/A"
-            
-#             try:
-#                 synonym_container = driver.find_element(By.CSS_SELECTOR, ".ingredient-description + div + div")
-#                 synonym_icon = synonym_container.find_element(By.CSS_SELECTOR, "div")
-                
-#                 print("KLASA: " + synonym_icon.get_attribute("class"))
-                
-#                 time.sleep(2)
-#                 # if(synonym_icon.get_attribute("class"))
-#             except:
-#                 continue
