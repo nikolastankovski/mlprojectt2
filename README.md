@@ -28,6 +28,7 @@ https://theklog.co/skincare-ingredient-glossary/
 ---
 
 ## Сајтови со Бази на синоними:
+https://skinsort.com/ingredients      
 https://webbook.nist.gov/chemistry/name-ser/#Help        
 Да се корисити Берт бидејќи е претрениран на википедија    
 
