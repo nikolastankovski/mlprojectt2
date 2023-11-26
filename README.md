@@ -76,6 +76,9 @@ https://single-market-economy.ec.europa.eu/sectors/cosmetics/cosmetic-ingredient
 
 ## Идеи:
 https://medium.com/@zahrahanifahh/predict-appropriate-ingredients-cosmetics-products-using-data-science-15a0b4bfa012
+https://towardsdatascience.com/for-your-skin-beauty-mapping-cosmetic-items-with-bokeh-af7523ca68e5
+https://www.kaggle.com/code/kingabzpro/cosmetics-ingredients
+http://eprints.intimal.edu.my/1667/1/Vol.2022_12.pdf
 
 ---
 
