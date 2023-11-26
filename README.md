@@ -74,6 +74,11 @@ https://single-market-economy.ec.europa.eu/sectors/cosmetics/cosmetic-ingredient
 
 ---
 
+## Идеи:
+https://medium.com/@zahrahanifahh/predict-appropriate-ingredients-cosmetics-products-using-data-science-15a0b4bfa012
+
+---
+
 ## Мејлови:
 gorjan.popovski@gmail.com     
 vesnapopdimitrijoska@gmail.com     
