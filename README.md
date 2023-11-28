@@ -27,10 +27,17 @@ https://theklog.co/skincare-ingredient-glossary/
 
 ---
 
-## Сајтови со Бази на синоними:
+## Сајтови со датабази со баркодови:      
+https://www.ean-search.org/ean-database-api.html
+
+---
+
+
+## Сајтови со датабази со синоними:
 https://skinsort.com/ingredients      
 https://webbook.nist.gov/chemistry/name-ser/#Help        
-Да се корисити Берт бидејќи е претрениран на википедија    
+Да се корисити Берт бидејќи е претрениран на википедија        
+https://www.cas.org/services/commonchemistry-api   - Сајт од Јован     
 
 ---
 
@@ -75,10 +82,10 @@ https://single-market-economy.ec.europa.eu/sectors/cosmetics/cosmetic-ingredient
 ---
 
 ## Идеи:
-https://medium.com/@zahrahanifahh/predict-appropriate-ingredients-cosmetics-products-using-data-science-15a0b4bfa012
-https://towardsdatascience.com/for-your-skin-beauty-mapping-cosmetic-items-with-bokeh-af7523ca68e5
-https://www.kaggle.com/code/kingabzpro/cosmetics-ingredients
-http://eprints.intimal.edu.my/1667/1/Vol.2022_12.pdf
+https://medium.com/@zahrahanifahh/predict-appropriate-ingredients-cosmetics-products-using-data-science-15a0b4bfa012        
+https://towardsdatascience.com/for-your-skin-beauty-mapping-cosmetic-items-with-bokeh-af7523ca68e5       
+https://www.kaggle.com/code/kingabzpro/cosmetics-ingredients       
+http://eprints.intimal.edu.my/1667/1/Vol.2022_12.pdf       
 
 ---
 
