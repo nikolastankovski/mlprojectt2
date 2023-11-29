@@ -42,7 +42,11 @@ https://www.cas.org/services/commonchemistry-api   - Сајт од Јован
 ---
 
 ## Distance metrics:       
-https://en.wikipedia.org/wiki/Jaccard_index
+https://en.wikipedia.org/wiki/Jaccard_index     
+https://datagy.io/python-hamming-distance/     
+https://www.geeksforgeeks.org/edit-distance-dp-5/     
+https://github.com/minimaxir/char-embeddings     
+
 
 ---
 
