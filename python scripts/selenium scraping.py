@@ -1,17 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from datetime import datetime
 
-import time
 import threading
 import csv
-
 
 class Browser:
     def __init__(self) -> None:
         options = webdriver.ChromeOptions()
         options.add_argument("--headless=new")
-        self.browser = webdriver.Chrome(options=options)
+        self.browser = webdriver.Chrome()
 
     def go_to(self, url:str):
         self.browser.get(url)
@@ -40,12 +39,11 @@ class Browser:
 class Arguments:
     def __init__(self) -> None:
         self.callbackFn = None
-        self.base_url = None
-        self.start_page = None
-        self.end_page = None
+        self.base_url:str = None
+        self.start_page:int = None
+        self.end_page:int = None
         self.page_steps = None
-        self.step = None
-        self.no_of_instances = None
+        self.instance:int = None
 
 def get_step_pages(no_of_pages, no_of_instances = 5):
     per_page = int(no_of_pages / no_of_instances)    
@@ -55,17 +53,17 @@ def get_step_pages(no_of_pages, no_of_instances = 5):
 
     pages = [i for i in range(0, no_of_pages, per_page)]
 
-    groups = []
+    groups = list()
     for i in range(len(pages)):
-        
-        next_num = None
+        current_page = pages[i] + 1
+        next_page = None
         if i+1 >= len(pages):
-            next_num = no_of_pages
+            next_page = no_of_pages
         else:
-            next_num = pages[i + 1]
+            next_page = pages[i + 1]
         
-        groups.append({"start_page": pages[i] + 1, "end_page": next_num})
-    
+        groups.append({"start_page": current_page, "end_page": next_page})
+        
     return groups
 
 def initiate_drivers(args:Arguments):
@@ -80,15 +78,18 @@ def initiate_drivers(args:Arguments):
     thread_list = []
 
     for i in range(len(scraper_arguments)):
+        scraper_arguments[i].instance = i + 1
         thread_list.append(threading.Thread(target=args.callbackFn, args=[scraper_arguments[i]]))
 
     for i in range(len(thread_list)):
         thread_list[i].start()
         
-def scrape_skinsort1(args:Arguments):     
+def scrape_skinsort(args:Arguments):     
     browser = Browser()
     
-    FILE_PATH = f'./Data/skinsort/ingredients_{args.start_page}_{args.end_page}.csv'
+    current_datetime = datetime.now().strftime("%Y%m%d_%H%M")
+
+    FILE_PATH = f'./Data/skinsort/ingredients_{current_datetime}_{args.start_page}_{args.end_page}.csv'
     
     with open(FILE_PATH, 'w', newline='', encoding="utf-8") as file:
         file.truncate()
@@ -122,10 +123,12 @@ def scrape_skinsort1(args:Arguments):
                         ingredient_synonyms = str(browser.find_element("p", synonym_container).text.split("\n")[1])
                 finally:
                     writer.writerow([ingredient_name, ingredient_synonyms])
-                        
+    
+    print(str(args.instance) + " end:", datetime.now())
+    
     browser.quit()
 
-def scrape_Skinsort():
+def initiate_scraper_skinsort():
     BASE_ULR_SKINSORT = "https://skinsort.com/ingredients"
     
     browser = Browser()
@@ -133,19 +136,17 @@ def scrape_Skinsort():
     
     last_page_item = browser.find_element(".page-item:last-child a")
     no_of_pages = int(last_page_item.get_attribute("href").split("/")[-1])
-            
+    
+    no_of_pages = 20
+    
     browser.quit()
 
-    t1 = time.time()
-    print("Start: ", t1)
+    print("Start: ", datetime.now())
     args = Arguments()
-    args.callbackFn = scrape_skinsort1
+    args.callbackFn = scrape_skinsort
     args.page_steps = get_step_pages(no_of_pages)
     args.base_url = BASE_ULR_SKINSORT    
     
     initiate_drivers(args)
-    t2 = time.time()
-    print("End: ", t2)
-    print("Time to finish: ", t2-t1)
 
-scrape_Skinsort()
+initiate_scraper_skinsort()
