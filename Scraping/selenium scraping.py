@@ -80,9 +80,11 @@ def initiate_drivers(args:Arguments):
 
     thread_list = []
 
-    for i in range(len(scraper_arguments)):
-        scraper_arguments[i].instance = i + 1
-        thread_list.append(threading.Thread(target=args.callbackFn, args=[scraper_arguments[i]]))
+    #for i in range(len(scraper_arguments)):
+    instance = 0
+    for s_args in scraper_arguments:
+        s_args.instance = (instance + 1)
+        thread_list.append(threading.Thread(target=args.callbackFn, args=[s_args]))
 
     for t in thread_list:
        t.start()
@@ -149,6 +151,8 @@ def initiate_scraper_skinsort():
     last_page_item = browser.find_element(".page-item:last-child a")
     no_of_pages = int(last_page_item.get_attribute("href").split("/")[-1])
             
+    no_of_pages = 10
+    
     browser.quit()
         
     args = Arguments()
