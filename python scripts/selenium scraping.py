@@ -5,6 +5,7 @@ from datetime import datetime
 
 import threading
 import csv
+import os
 
 class Browser:
     def __init__(self) -> None:
@@ -67,6 +68,8 @@ def get_step_pages(no_of_pages, no_of_instances = 5):
     return groups
 
 def initiate_drivers(args:Arguments):
+    print("Start: ", datetime.now())
+    
     scraper_arguments = []
     for item in args.page_steps:
         scraper_args = Arguments()
@@ -81,15 +84,27 @@ def initiate_drivers(args:Arguments):
         scraper_arguments[i].instance = i + 1
         thread_list.append(threading.Thread(target=args.callbackFn, args=[scraper_arguments[i]]))
 
-    for i in range(len(thread_list)):
-        thread_list[i].start()
+    for t in thread_list:
+       t.start()
+    
+    for t in thread_list:
+       t.join()
+    
+    print("End: ", datetime.now())
         
 def scrape_skinsort(args:Arguments):     
     browser = Browser()
     
     current_datetime = datetime.now().strftime("%Y%m%d_%H%M")
+    
+    FILE_PATH = f'./Data/skinsort/scrape_{current_datetime}'
 
-    FILE_PATH = f'./Data/skinsort/ingredients_{current_datetime}_{args.start_page}_{args.end_page}.csv'
+    try:
+        os.makedirs(FILE_PATH)
+    except:
+        None
+
+    FILE_PATH = FILE_PATH + f"/ingredients_{args.start_page}_{args.end_page}.csv"
     
     with open(FILE_PATH, 'w', newline='', encoding="utf-8") as file:
         file.truncate()
@@ -122,9 +137,7 @@ def scrape_skinsort(args:Arguments):
                         ingredient_synonyms = str(browser.find_element("p", synonym_container).text.split("\n")[1])
                 finally:
                     writer.writerow([ingredient_name + ";" + ingredient_synonyms])
-    
-    print(str(args.instance) + " end:", datetime.now())
-    
+        
     browser.quit()
 
 def initiate_scraper_skinsort():
@@ -135,13 +148,9 @@ def initiate_scraper_skinsort():
     
     last_page_item = browser.find_element(".page-item:last-child a")
     no_of_pages = int(last_page_item.get_attribute("href").split("/")[-1])
-        
-    no_of_pages = 10
-    
+            
     browser.quit()
-
-    print("Start: ", datetime.now())
-    
+        
     args = Arguments()
     args.callbackFn = scrape_skinsort
     args.page_steps = get_step_pages(no_of_pages)
