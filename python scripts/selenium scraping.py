@@ -10,7 +10,7 @@ class Browser:
     def __init__(self) -> None:
         options = webdriver.ChromeOptions()
         options.add_argument("--headless=new")
-        self.browser = webdriver.Chrome()
+        self.browser = webdriver.Chrome(options=options)
 
     def go_to(self, url:str):
         self.browser.get(url)
@@ -94,12 +94,11 @@ def scrape_skinsort(args:Arguments):
     with open(FILE_PATH, 'w', newline='', encoding="utf-8") as file:
         file.truncate()
         writer = csv.writer(file, delimiter=";")
-        field = ["name", "synonym"]
+        field = ["name;synonym"]
         
         writer.writerow(field)
         
-        for i in range(args.start_page, args.end_page + 1):
-            page_no = i+1
+        for page_no in range(args.start_page, args.end_page + 1):
             url = args.base_url + "/page/" + str(page_no)
             browser.go_to(url)
                 
@@ -122,7 +121,7 @@ def scrape_skinsort(args:Arguments):
                     if("bg-emerald-100" in el_classes):
                         ingredient_synonyms = str(browser.find_element("p", synonym_container).text.split("\n")[1])
                 finally:
-                    writer.writerow([ingredient_name, ingredient_synonyms])
+                    writer.writerow([ingredient_name + ";" + ingredient_synonyms])
     
     print(str(args.instance) + " end:", datetime.now())
     
@@ -136,12 +135,13 @@ def initiate_scraper_skinsort():
     
     last_page_item = browser.find_element(".page-item:last-child a")
     no_of_pages = int(last_page_item.get_attribute("href").split("/")[-1])
-    
-    no_of_pages = 20
+        
+    no_of_pages = 10
     
     browser.quit()
 
     print("Start: ", datetime.now())
+    
     args = Arguments()
     args.callbackFn = scrape_skinsort
     args.page_steps = get_step_pages(no_of_pages)
