@@ -11,6 +11,7 @@ import threading
 import csv
 import os
 import logging
+import re
 
 #region FOLDERS
 CURRENT_DIR = os.getcwd()
@@ -88,7 +89,7 @@ def merge_files(folder_path:str):
             
     df_concat.to_csv(f"{folder_path}/merged_ingredients.csv", index=False, sep=";") 
 
-def get_step_pages(no_of_pages, no_of_instances = 5):
+def get_step_pages(no_of_pages, no_of_instances = 6):
     per_page = int(no_of_pages / no_of_instances)    
     
     if per_page == 0:
@@ -134,6 +135,7 @@ def initiate_drivers(args:Arguments):
     for t in thread_list:
        t.join()
     
+    merge_files(args.folder_path)
     print("End: ", dt.now())
         
 def scrape_skinsort(args:Arguments):     
@@ -170,7 +172,8 @@ def scrape_skinsort(args:Arguments):
                     
                     if("bg-emerald-100" in el_classes):
                         ingredient_synonyms = str(browser.find_element("p", synonym_container).text.split("\n")[1])
-                        ingredient_synonyms = ingredient_synonyms.replace(", ","|").replace(" and ", "").replace("and ", "")
+                        ingredient_synonyms = re.sub(r'(?<=\d),\s+(?=\d)', ",", ingredient_synonyms)
+                        ingredient_synonyms = ingredient_synonyms.replace(", ","|").replace(" and ", "|").replace("and ", "")
                         ingredient_synonyms = ingredient_synonyms if ingredient_name == "N/A" else f"{ingredient_name}|{ingredient_synonyms}"
                     else:
                         ingredient_synonyms = ingredient_name                 
@@ -200,8 +203,8 @@ def initiate_scraper_skinsort():
     
     last_page_item = browser.find_element(".page-item:last-child a")
     no_of_pages = int(last_page_item.get_attribute("href").split("/")[-1])
-            
-    no_of_pages = 10
+           
+    #no_of_pages = 1
     
     browser.quit()
         
@@ -213,6 +216,5 @@ def initiate_scraper_skinsort():
     )
     
     initiate_drivers(args)
-    merge_files(SAVE_IN_FOLDER)
     
 initiate_scraper_skinsort()
