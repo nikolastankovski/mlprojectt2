@@ -161,8 +161,8 @@ def scrape_skinsort(args:Arguments):
             for url in ingredient_urls:
                 browser.go_to(url)
                 
-                ingredient_name = "N/A" if browser.find_element("#content div > h1") == None else browser.find_element("#content div > h1").text.strip()
-                ingredient_synonyms = "N/A"
+                ingredient_name = None if browser.find_element("#content div > h1") == None else browser.find_element("#content div > h1").text.strip()
+                ingredient_synonyms = None
                 
                 try:                    
                     synonym_container = browser.find_element(".ingredient-description + div + div")
@@ -174,7 +174,6 @@ def scrape_skinsort(args:Arguments):
                         ingredient_synonyms = str(browser.find_element("p", synonym_container).text.split("\n")[1])
                         ingredient_synonyms = re.sub(r'(?<=\d),\s+(?=\d)', ",", ingredient_synonyms)
                         ingredient_synonyms = ingredient_synonyms.replace(", ","|").replace(" and ", "|").replace("and ", "")
-                        ingredient_synonyms = ingredient_synonyms if ingredient_name == "N/A" else f"{ingredient_name}|{ingredient_synonyms}"
                     else:
                         ingredient_synonyms = ingredient_name                 
                     
