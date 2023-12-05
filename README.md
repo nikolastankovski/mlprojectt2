@@ -61,6 +61,11 @@ https://github.com/nidhaloff/deep-translator
 
 ---
 
+## Resize на фолдер со слики
+https://bulkresizephotos.com/en?quality=50
+
+---
+
 ## Ресурси пратени од Горјан:
 OCR:       
 https://github.com/JaidedAI/EasyOCR      
