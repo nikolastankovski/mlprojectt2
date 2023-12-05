@@ -34,7 +34,8 @@ https://www.ean-search.org/ean-database-api.html
 
 
 ## Сајтови со датабази со синоними:
-https://skinsort.com/ingredients      
+https://skinsort.com/ingredients    
+https://www.ewg.org/skindeep/search/
 https://webbook.nist.gov/chemistry/name-ser/#Help        
 Да се корисити Берт бидејќи е претрениран на википедија        
 https://www.cas.org/services/commonchemistry-api   - Сајт од Јован     
