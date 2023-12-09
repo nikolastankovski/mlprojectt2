@@ -46,7 +46,9 @@ https://www.cas.org/services/commonchemistry-api   - Сајт од Јован
 https://en.wikipedia.org/wiki/Jaccard_index     
 https://datagy.io/python-hamming-distance/     
 https://www.geeksforgeeks.org/edit-distance-dp-5/     
-https://github.com/minimaxir/char-embeddings     
+https://github.com/minimaxir/char-embeddings  
+https://en.wikipedia.org/wiki/Levenshtein_distance
+https://en.wikipedia.org/wiki/Cosine_similarity
 
 
 ---
